@@ -1,0 +1,192 @@
+/*---------------------For All ------------------------------*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background-color: silver;
+}
+
+/*----------------------------Header & Footer-------------------------------------*/
+#header{
+	padding: 15px;
+	 background: radial-gradient(ellipse at bottom left, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25), rgba(42, 60, 87, 0.4)), linear-gradient(135deg, #670d10, #092756);
+	color: white;
+  width: 100%;
+}
+#footer{
+	background-color: #AA00FF;
+  	color: white;
+  	text-align: center;
+  	font-size: 14px;
+  	padding: 15px;
+  	width: 100%;
+}
+
+
+/*----------------Generic----------------------------------------*/
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.row ul {
+  list-style-type: none;
+}
+
+.row li {
+  background-color: #cc8899;
+  color: white;
+  font-size: 30px;
+  display: inline;
+  float: left;
+  position: relative;
+  height: 350px;
+  text-align: center;
+  border: white 7px solid;
+  overflow: hidden;
+}
+
+.row li:hover {
+  background-color: #0099cc;
+}
+.mask{
+  position: absolute;
+  overflow: hidden;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.row li img {
+  display: block;
+  position: relative
+}
+
+.row li h2 {
+	margin-top: 120px;
+  	text-transform: uppercase;
+  	color: #fff;
+  	text-align: center;
+  	font-size: 20px;
+}
+
+.row li p {
+  font-style: italic;
+  font-size: 19px;
+  color: #fff;
+  padding: 0px 20px 0px;
+}
+
+.row li a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 14px;
+  background: #000;
+  color: #fff;
+  font-family: Raleway, serif;
+  text-transform: uppercase;
+  box-shadow: 0 0 1px #000
+}
+
+.row li a:hover {
+  box-shadow: 0 0 5px #000
+}
+
+
+
+
+
+
+/*----------------------Effect 1------------------------*/
+
+.effect-1 img{
+	height: 100%;
+	transition: all 0.2s linear;
+}
+.effect-1 .mask {
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+.effect-1 h2 {
+  transform: translateY(-100px);
+  transition: all 0.4s ease-in-out;
+}
+
+.effect-1 p {
+  transform: translateY(100px);
+  transition: all 0.4s linear;
+}
+
+.effect-1 a {
+  transition: all 0.4s ease-in-out;
+}
+/* On Hover */
+.effect-1:hover img {
+  transform: scale(1.1);
+  opacity: 0.2;
+}
+
+.effect-1:hover .mask {
+  opacity: 1;
+}
+
+.effect-1:hover h2,
+.effect-1:hover p,
+.effect-1:hover a {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.effect-1:hover p {
+  transition-delay: 0.1s;
+}
+
+.effect-1:hover a{
+  transition-delay: 0.2s;
+}
+
+
+/* Responisve */
+
+/*Desktop*/
+@media only screen and (min-width: 768px) {
+  .col-l-1 {width: 8.33%;}
+  .col-l-2 {width: 16.66%;}
+  .col-l-3 {width: 25%;}
+  .col-l-4 {width: 33.33%;}
+  .col-l-5 {width: 41.66%;}
+  .col-l-6 {width: 50%;}
+  .col-l-7 {width: 58.33%;}
+  .col-l-8 {width: 66.66%;}
+  .col-l-9 {width: 75%;}
+  .col-l-10 {width: 83.33%;}
+  .col-l-11 {width: 91.66%;}
+  .col-l-12 {width: 100%;}
+}
+
+/*tablet*/
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+/*phone*/
+@media only screen and (max-width: 600px){
+	.col-xs {width: 100%}
+}
