@@ -62,6 +62,7 @@ function UpdateScoreBoard(){
         var activeElement = document.querySelector('.active');
         var rect = activeElement.getBoundingClientRect();
         
+        console.log(rect.top ,"-", MousePosY , "-" , rect.bottom);
         if(MousePosY>rect.top && MousePosY<rect.bottom)
         {
             if(MousePosX>rect.left && MousePosX<rect.right)
@@ -69,7 +70,7 @@ function UpdateScoreBoard(){
                 score++;
             }
         }
-        console.log(score);
+        //console.log(score);
         SCORE.textContent = score;
     }
 }
