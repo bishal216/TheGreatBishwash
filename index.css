@@ -3,38 +3,97 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Special Elite', cursive;
+  color: #32ae85;
 }
 body{
 	background-color: silver;
 }
 
-/*----------------------------Header & Footer-------------------------------------*/
-#header{
-	padding: 15px;
-	 background: radial-gradient(ellipse at bottom left, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25), rgba(42, 60, 87, 0.4)), linear-gradient(135deg, #670d10, #092756);
-	color: white;
+/*----------------------------Nav-Bar-------------------------------------*/
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #506477;
+  overflow: hidden;
+  width: 90%;
+  margin-left: 5%;
+  height: 45px;
+}
+/*------------For Logo Image-------------------*/
+.topnav .logo-img{
+  height: 100%;
+  width: 100px;
+}
+/*-----------For Title-------------*/
+.topnav h2{
+  text-transform: uppercase;
+  padding: 1%;
+}
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #e4f0fb;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: #739077;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #df4576;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+/*----------------Generic----------------------------------------*/
+a{
+  text-decoration: none;
+}
+img{
+  height: 100%;
   width: 100%;
 }
-#footer{
-	background-color: #AA00FF;
-  	color: white;
-  	text-align: center;
-  	font-size: 14px;
-  	padding: 15px;
-  	width: 100%;
+.inline-block{
+  display: inline-block;
+}
+.inline{
+  display: inline;
 }
 
-
-/*----------------Generic----------------------------------------*/
-
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.height100{
+  height: 100%;
+}
 .row::after {
   content: "";
   clear: both;
   display: table;
 }
 
+.p1{
+  padding: 1%;
+}
+
+.p5{
+  padding: 5%;
+}
 .row ul {
   list-style-type: none;
+}
+.showBorder{
+  border: solid red 1px;
 }
 
 .row li {
