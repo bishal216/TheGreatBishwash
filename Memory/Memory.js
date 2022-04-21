@@ -15,19 +15,15 @@ function shuffle(array) {
 
   return array;
 }
-function sleep(milliseconds) {
-  const date = Date.now();
-  do {currentDate = Date.now();} while (currentDate - date < milliseconds);
-}
-starttime=new Date().getTime();
-running = false;
+var score =100;
+
 const CardArray = [
-{name: 'POGmish1',face:'false',},
-{name: 'POGmish2',face:'false',},
-{name: 'POGmish3',face:'false',},
-{name: 'POGmish4',face:'false',},
-{name: 'POGmish5',face:'false',},
-{name: 'POGmish6',face:'false',},
+{name: 'POGmish1',},
+{name: 'POGmish2',},
+{name: 'POGmish3',},
+{name: 'POGmish4',},
+{name: 'POGmish5',},
+{name: 'POGmish6',},
 
 {name: 'POGmish1',},
 {name: 'POGmish2',},
@@ -36,15 +32,10 @@ const CardArray = [
 {name: 'POGmish5',},
 {name: 'POGmish6',},
 
-// {name: 'POGmish1',image: '../images/POGmish1.png',},
-// {name: 'POGmish2',image: '../images/POGmish2.png',},
-// {name: 'POGmish3',image: '../images/POGmish3.png',},
-// {name: 'POGmish4',image: '../images/POGmish4.png',},
-// {name: 'POGmish5',image: '../images/POGmish5.png',},
-// {name: 'POGmish6',image: '../images/POGmish6.png',},
 ]
 
 GRID = document.getElementById('GRID');
+scoreboard = document.getElementById('score');
 
 function startGame(){
 	GRID.innerHTML = '';
@@ -59,42 +50,42 @@ function startGame(){
       card.setAttribute("onclick","clicked(\""+CardArray[i].name+"\",this.id)")
       
       GRID.appendChild(card);
-
+      scoreboard.innerHTML = score;
   }
 }
 lastCard = ""
 lastCardID = ""
 function clicked(argument1,argument2) {
- 
+  
   pic = document.getElementById(argument2)
   pic.setAttribute("src","../images/"+argument1+".png")
-  console.log(lastCard+","+argument1+","+argument2)
   if (lastCard == "") 
   {
     lastCard = argument1;
     lastCardID = argument2;
-    console.log("New")
   }
   else if(lastCard == argument1){
-    console.log("Success")
+    score--;
     pic.classList.remove("redborder");
     pic.classList.add("greenborder");
+    pic.removeAttribute("onclick");
+    document.getElementById(lastCardID).removeAttribute("onclick");
     document.getElementById(lastCardID).classList.remove("redborder");
     document.getElementById(lastCardID).classList.add("greenborder");
     lastCard=""
     lastCardID=""
   }
   else if(lastCard != argument1){
-    
+    score--;
     setTimeout(()=>
       {
         pic.setAttribute("src","../images/TGB.png");
         document.getElementById(lastCardID).setAttribute("src","../images/TGB.png");
-        console.log("Failed");
         lastCard =""
         lastCardID=""
       }, 
       500);
     
   }
+  scoreboard.innerHTML = score;
 }
