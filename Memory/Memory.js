@@ -64,7 +64,7 @@ function clicked(argument1,argument2) {
     lastCard = argument1;
     lastCardID = argument2;
   }
-  else if(lastCard == argument1){
+  else if(lastCard == argument1 && lastCardID!=argument2){
     score--;
     pic.classList.remove("redborder");
     pic.classList.add("greenborder");
