@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Patrick Hand', cursive;
+    color: #eee;
+}
+body{
+		text-align: center;
+		font-size: 30px;
+		color : white;
+        background-color: #333;
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+}
+#drawer{
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    float: left;
+    background-color: #222;
+}
+#drawer>a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #ddd;
+    padding: none;
+    text-align: left;
+
+}
+#drawer h1{
+    padding-top: 20%;
+    color: #eee;
+}
+#drawer>p{
+    font-size: 30px;
+    color: #ddd;
+    padding-left: 10%;
+    text-align: left;
+
+}
+#drawer #score,
+#drawer #highscore {
+    margin-top: 2%;
+    margin-left: 5%;
+    max-width: 90%;
+    background-color:#777;
+    border-radius: 20px;
+}
+button{
+    height: 75px;
+    width:175px;
+    background-color: #555;
+    margin-top: 20%;margin-bottom: 60%;
+    border-radius: 20px;
+    font-size: 30px;
+    font-style: bold;
+    border: none;
+}
+button:hover{
+    background-color: #111;
+    font-size: 40px;
+}
+
+#GameArea {
+    width: 80%;
+    height: 100%;
+    display:inline-block;
+    float: left; 
+    background-color: #000;
+    padding: 0% 5%;
+}
+#GRID{
+    padding: 0% 5%;
+    
+}
+.cards{
+    height:220px;width:200px;object-fit:cover;
+    margin: 1% 5%;
+    
+}
+.redborder{
+    border: 1px solid red;
+}
+.greenborder{
+    border: 2px solid green;
+}
