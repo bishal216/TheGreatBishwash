@@ -59,6 +59,8 @@ function clicked(argument1,argument2) {
   
   pic = document.getElementById(argument2)
   pic.setAttribute("src","../images/"+argument1+".png")
+  pic.classList.add("rotated")
+  setTimeout(()=>{pic.classList.remove("rotated")},500)
   if (lastCard == "") 
   {
     lastCard = argument1;
