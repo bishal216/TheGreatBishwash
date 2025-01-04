@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n-ordle</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./../../utilities/virtual-keyboard/keyboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+
+    <script src="01-words.js" defer></script>
+    <script src="02-createboard.js" defer></script>
+    <script src="03-animate.js" defer></script>
+    <script src="script.js" defer></script>
+
+
+    <script src="./../../utilities/virtual-keyboard/keyboard.js" defer></script>
+    <script src="./../../utilities/themes/theme-changer.js" defer></script>
+</head>
+
+<body>
+    <div class="game-setup">
+        <h1 id="setup-title">n-ordle</h1>
+        <p>Choose how many n-ordle boards you want to play simultaneously and click "Start Game" to begin.</p>
+        <label for="num-nordles">Number of n-ordles</label>
+        <input type="number" id="num-nordles" min="1" max="1000" value="1">
+        <button onclick="startNewGame()">Start Game</button>
+    </div>
+
+    <!-- Game Controls Menu -->
+    <div class="controls" id="game-controls">
+        <button title="Toggle Virtual Keyboard" onclick="toggleVirtualKeyboard()">K</button>
+        <button title="Toggle Colorblind Mode" onclick="toggleColorblindMode()">🌓</button>
+        <button title="Toggle Dark Theme" onclick="toggleDarkMode()">🌑</button>
+    </div>
+
+    <!-- Game Setup Section -->
+
+
+
+    <!-- Game Boards Container -->
+    <div id="game-boards" class="game-boards"></div>
+
+    <!-- Virtual Keyboard -->
+    <div id="virtual-keyboard" class="virtual-keyboard"></div>
+</body>
+
+<script>
+
+</script>
+
+</html>
