@@ -66,3 +66,6 @@ const handleVirtualKeyPress = (key) => {
 
   document.dispatchEvent(event);
 };
+
+// Start with keyboard ON
+toggleVirtualKeyboard();
