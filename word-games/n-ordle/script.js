@@ -69,7 +69,6 @@ document.addEventListener("keydown", (event) => {
     updateCellForAllBoards(guesses.length, currentGuess.length - 1, "");
     currentGuess = currentGuess.slice(0, -1); // Remove the last characters
   }
-  console.log("Current guess:", currentGuess);
 });
 
 const updateCellForAllBoards = (row, col, value) => {
@@ -133,38 +132,55 @@ const updateCell = (cell, value, className) => {
   }
 };
 
-const checkAllBoards = (currentGuess) => {
-  const currentRow = guesses.length; // Get the index of the current row
-  boards.forEach((board, index) => {
-    // Skip solved boards
-    if (board.solved) {
-      return;
-    }
+const checkBoard = (board, currentGuess, currentRow, boardIndex) => {
+  if (board.solved) return;
 
-    const target = board.answer;
-    const result = compareWords(target, currentGuess); // Compare the target and current guess
+  const target = board.answer;
+  const result = compareWords(target, currentGuess);
 
-    const rowElement = board.boardElement.querySelector(
-      `#board-${index}-row-${currentRow}`
-    );
+  const rowElement = board.boardElement.querySelector(
+    `#board-${boardIndex}-row-${currentRow}`
+  );
 
-    console.log("Row element:", rowElement);
-    rowElement.querySelectorAll(".grid-cell").forEach((cell, index) => {
-      // Update the cell's class based on the result
-      if (result[index] === "RIGHT") {
-        cell.classList.add(CLASS_CORRECT);
-      }
-      if (result[index] === "IN") {
-        cell.classList.add(CLASS_IN_WORD);
-      }
-      if (result[index] === "NOT") {
-        cell.classList.add(CLASS_NOT_IN_WORD);
-      }
-    });
+  updateRowCells(rowElement, result);
 
-    // Mark board as solved if all letters are correct
-    if (result.every((answer) => answer === "RIGHT")) {
-      board.solved = true;
+  if (isBoardSolved(result)) {
+    board.solved = true;
+  }
+};
+
+const updateRowCells = (rowElement, result) => {
+  rowElement.querySelectorAll(".grid-cell").forEach((cell, index) => {
+    if (result[index] === "RIGHT") {
+      cell.classList.add(CLASS_CORRECT);
+    } else if (result[index] === "IN") {
+      cell.classList.add(CLASS_IN_WORD);
+    } else if (result[index] === "NOT") {
+      cell.classList.add(CLASS_NOT_IN_WORD);
     }
   });
 };
+
+const isBoardSolved = (result) => result.every((answer) => answer === "RIGHT");
+
+const checkAllBoards = (currentGuess) => {
+  const currentRow = guesses.length;
+
+  boards.forEach((board, index) => {
+    checkBoard(board, currentGuess, currentRow, index);
+  });
+};
+
+const helpDialog = document.querySelector("#how-to-play");
+const showButton = document.querySelector("#showHelp");
+const closeButton = document.querySelector("#close-help");
+
+// "Show the dialog" button opens the dialog modally
+showButton.addEventListener("click", () => {
+  helpDialog.showModal();
+});
+
+// "Close" button closes the dialog
+closeButton.addEventListener("click", () => {
+  helpDialog.close();
+});

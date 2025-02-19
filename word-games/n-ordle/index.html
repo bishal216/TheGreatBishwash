@@ -40,6 +40,7 @@
         <button title="Toggle Virtual Keyboard" onclick="toggleVirtualKeyboard()">⌨</button>
         <button title="Toggle Colorblind Mode" onclick="toggleColorblindMode()">🌓</button>
         <button title="Toggle Dark Theme" onclick="toggleDarkMode()">🌑</button>
+        <button title="Toggle Instructions" onclick="" id="showHelp">💡</button>
     </div>
 
     <!-- Game Boards Container -->
@@ -47,6 +48,77 @@
 
     <!-- Virtual Keyboard -->
     <div id="virtual-keyboard" class="virtual-keyboard"></div>
+
+    <dialog class="how-to-play" id="how-to-play">
+        <div class="title">How to Play Nordle</div>
+        <div class="instructions">
+            Nordle is like Wordle, but with <strong>multiple boards</strong>! Guess the words on all boards
+            simultaneously.
+            <br><br>
+            After each guess, each board will give you feedback. The color of the tiles will show how close you are for
+            that
+            board:
+        </div>
+
+        <div id="hint-game-boards">
+            <!-- Board 1 -->
+            <div class="game-board">
+                <div class="board-label">Board 1</div>
+                <div class="grid-row">
+                    <div class="grid-cell not-in-word">P</div>
+                    <div class="grid-cell in-word">A</div>
+                    <div class="grid-cell not-in-word">I</div>
+                    <div class="grid-cell not-in-word">N</div>
+                    <div class="grid-cell not-in-word">T</div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell">_</div>
+                    <div class="grid-cell">_</div>
+                    <div class="grid-cell">_</div>
+                    <div class="grid-cell">_</div>
+                    <div class="grid-cell">_</div>
+                </div>
+            </div>
+
+            <!-- Board 2 -->
+            <div class="game-board">
+                <div class="board-label">Board 2</div>
+                <div class="grid-row">
+                    <div class="grid-cell not-in-word">P</div>
+                    <div class="grid-cell not-in-word">A</div>
+                    <div class="grid-cell correct">I</div>
+                    <div class="grid-cell in-word">N</div>
+                    <div class="grid-cell not-in-word">T</div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell">_</div>
+                    <div class="grid-cell">_</div>
+                    <div class="grid-cell">_</div>
+                    <div class="grid-cell">_</div>
+                    <div class="grid-cell">_</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <strong>Rules:</strong>
+            <ul>
+                <li>Guess a word, and it applies to <strong>all boards</strong>.</li>
+                <li>Each board will provide feedback based on the hidden word for that board:</li>
+                <ul>
+                    <li><span class="correct">Green</span>: Correct letter and position.</li>
+                    <li><span class="in-word">Yellow</span>: Correct letter, wrong position.</li>
+                    <li><span class="not-in-word">Gray</span>: Letter not in the word.</li>
+                </ul>
+                <li>Win by solving all boards in the fewest guesses possible!</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            Ready to take on the Nordle challenge? Good luck!
+        </div>
+        <button id="close-help">I understand</button>
+    </dialog>
 </body>
 
 <script>

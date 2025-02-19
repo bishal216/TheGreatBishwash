@@ -28,6 +28,7 @@ const toggleVirtualKeyboard = () => {
         const keyElement = document.createElement("div");
         keyElement.textContent = key;
         keyElement.classList.add("keyboard-key");
+        keyElement.id = `virtual-key-${key}`;
 
         // Add a special class for wide keys like "ENTER" and "DEL"
         if (key === "ENTER" || key === "DEL") {
