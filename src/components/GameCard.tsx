@@ -1,6 +1,6 @@
 import { Card, CardMedia, CardContent, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Game } from '../config/games';
+import type { Game } from '../config/games';
 
 interface GameCardProps {
   game: Game;
@@ -34,4 +34,4 @@ export default function GameCard({ game }: GameCardProps) {
       </Button>
     </Card>
   );
-} 
+}
