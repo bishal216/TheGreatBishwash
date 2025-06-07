@@ -1,9 +1,11 @@
 import { Container, Typography, Box } from '@mui/material';
 import { games } from '../config/games';
-import GameCard from './GameCard';
+import GameCard from '../components/GameCard';
+
 
 export default function Home() {
   return (
+    <>
     <Container maxWidth="xl" sx={{ py: 6, px: { xs: 2, sm: 4 } }}>
       <Box sx={{ mb: 6 }}>
         <Typography
@@ -44,5 +46,6 @@ export default function Home() {
         ))}
       </Box>
     </Container>
+    </>
   );
 }
