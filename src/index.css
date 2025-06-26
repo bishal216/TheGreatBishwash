@@ -1,0 +1,228 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+@keyframes text-reveal {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes typewriter {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes caretBlink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-medium {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-fast {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes feature-ring-pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.paused {
+  animation-play-state: paused !important;
+}
+
+@theme {
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-text-reveal: text-reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out both;
+  --animate-typewriter: typewriter 2s steps(120) forwards;
+  --animate-caret: caretBlink 1s steps(1) infinite;
+  --animate-typing: typewriter 2s steps(120) infinite;
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+  --animate-pulse-slow: pulse-slow 6s ease-in-out infinite;
+  --animate-pulse-medium: pulse-medium 4s ease-in-out infinite;
+  --animate-pulse-fast: pulse-fast 2s ease-in-out infinite;
+  --animate-rotate-slow: rotate-slow 20s linear infinite;
+  --animate-gradient-x: gradient-x 3s ease infinite;
+  --animate-gradient-x-fast: gradient-x-fast 2s ease infinite;
+  --animate-shine: shine 2s infinite;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 10%;
+  --primary: 220 90% 56%;
+  --primary-foreground: 0 0% 100%;
+  --border: 220 13% 91%;
+}
+
+.dark {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 100%;
+  --primary: 220 90% 60%;
+}
