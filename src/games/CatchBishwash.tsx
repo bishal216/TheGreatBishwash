@@ -81,7 +81,7 @@ const CatchBishwash = () => {
   useEffect(() => {
     if (!isPlaying) return;
 
-    const spawnInterval = setInterval(spawnBishwash, 1000);
+    const spawnInterval = setInterval(spawnBishwash, 500);
 
     return () => {
       clearInterval(spawnInterval);
