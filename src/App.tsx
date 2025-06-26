@@ -1,31 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import LimbAndLoot from './games/LimbAndLoot';
-import KnightmareBoard from './games/knightmare';
-import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
-import theme from './theme';
-import Home from './pages/Home';
-import {Navbar} from './components/Navbar';
+import Home from "@/pages/Home";
+import GamePage from "@/pages/GamePage";
+import { Navbar } from "@/components/Navbar";
+
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <Router basename="/TheGreatBishwash">
       <Navbar />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/games/wab" element={<WhackABishwash />} /> */}
-          {/* <Route path="/games/rps" element={<RockPaperScissors />} /> */}
-          {/* <Route path="/games/memory" element={<Memory />} /> */}
-          {/* <Route path="/games/flip" element={<Flip />} /> */}
-          {/* <Route path="/games/catch" element={<CatchBishwash />} /> */}
-          {/* <Route path="/games/nordle" element={<Nordle />} /> */}
-          <Route path="/games/limb-and-loot" element={<LimbAndLoot />} />
-          <Route path="/games/knightmare" element={<KnightmareBoard />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:gameId" element={<GamePage />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,37 +1,18 @@
-import { Card, CardMedia, CardContent, Typography, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import type { Game } from '../config/games';
+import { Card, CardContent, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Game } from "@/config/games";
 
-interface GameCardProps {
+interface Props {
   game: Game;
 }
 
-export default function GameCard({ game }: GameCardProps) {
+export default function GameCard({ game }: Props) {
   return (
-    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <CardMedia
-        component="img"
-        height="200"
-        image={game.imageUrl}
-        alt={game.title}
-      />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h5" component="h2">
-          {game.title}
-        </Typography>
-        <Typography>
-          {game.description}
-        </Typography>
+    <Card component={Link} to={`/${game.id}`} sx={{ textDecoration: "none" }}>
+      <CardContent>
+        <Typography variant="h5">{game.title}</Typography>
+        <Typography variant="body2">{game.description}</Typography>
       </CardContent>
-      <Button
-        component={Link}
-        to={game.path}
-        variant="contained"
-        fullWidth
-        sx={{ mt: 2 }}
-      >
-        Play Now
-      </Button>
     </Card>
   );
 }

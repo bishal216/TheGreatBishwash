@@ -1,5 +1,5 @@
-import { Container, Typography, Box, Paper } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { Container, Typography, Box, Paper } from "@mui/material";
+import { useState, useEffect } from "react";
 
 type Card = {
   id: number;
@@ -32,7 +32,7 @@ export default function Flip() {
   useEffect(() => {
     if (timeLeft > 0 && !gameComplete) {
       const timer = setInterval(() => {
-        setTimeLeft(prev => prev - 1);
+        setTimeLeft((prev) => prev - 1);
       }, 1000);
       return () => clearInterval(timer);
     } else if (timeLeft === 0) {
@@ -43,18 +43,20 @@ export default function Flip() {
   const handleCardClick = (clickedId: number) => {
     if (gameComplete || cards[clickedId].isFlipped) return;
 
-    setCards(cards.map(card =>
-      card.id === clickedId ? { ...card, isFlipped: true } : card
-    ));
+    setCards(
+      cards.map((card) =>
+        card.id === clickedId ? { ...card, isFlipped: true } : card,
+      ),
+    );
     setMoves(moves + 1);
 
     // Check if all cards are flipped correctly
-    const newCards = cards.map(card =>
-      card.id === clickedId ? { ...card, isFlipped: true } : card
+    const newCards = cards.map((card) =>
+      card.id === clickedId ? { ...card, isFlipped: true } : card,
     );
-    
-    const allCorrect = newCards.every(card => 
-      card.isFlipped === card.isKangaroo
+
+    const allCorrect = newCards.every(
+      (card) => card.isFlipped === card.isKangaroo,
     );
 
     if (allCorrect) {
@@ -63,8 +65,8 @@ export default function Flip() {
   };
 
   const getCardColor = (card: Card) => {
-    if (!card.isFlipped) return 'primary.light';
-    return card.isKangaroo ? 'success.light' : 'error.light';
+    if (!card.isFlipped) return "primary.light";
+    return card.isKangaroo ? "success.light" : "error.light";
   };
 
   return (
@@ -73,7 +75,12 @@ export default function Flip() {
         <Typography variant="h2" component="h1" gutterBottom align="center">
           Flip
         </Typography>
-        <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 4 }}>
+        <Typography
+          variant="body1"
+          align="center"
+          color="text.secondary"
+          sx={{ mb: 4 }}
+        >
           Flip cards such that its always Kangaroo side up.
         </Typography>
 
@@ -85,63 +92,67 @@ export default function Flip() {
             Moves: {moves}
           </Typography>
           {gameComplete && (
-            <Typography 
-              variant="h4" 
-              align="center" 
+            <Typography
+              variant="h4"
+              align="center"
               color={timeLeft > 0 ? "success.main" : "error.main"}
               sx={{ mt: 2 }}
             >
-              {timeLeft > 0 
+              {timeLeft > 0
                 ? `Congratulations! You won in ${moves} moves!`
                 : "Time's up! Try again!"}
             </Typography>
           )}
         </Paper>
 
-        <Box sx={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 2,
-          maxWidth: '600px',
-          margin: '0 auto'
-        }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 2,
+            maxWidth: "600px",
+            margin: "0 auto",
+          }}
+        >
           {cards.map((card) => (
             <Paper
               key={card.id}
               elevation={3}
               onClick={() => handleCardClick(card.id)}
               sx={{
-                aspectRatio: '1',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                fontSize: '2rem',
+                aspectRatio: "1",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                fontSize: "2rem",
                 backgroundColor: getCardColor(card),
-                transition: 'transform 0.3s ease-in-out',
-                transform: card.isFlipped ? 'rotateY(180deg)' : 'rotateY(0)',
-                '&:hover': {
-                  transform: card.isFlipped ? 'rotateY(180deg)' : 'rotateY(0) scale(1.05)',
+                transition: "transform 0.3s ease-in-out",
+                transform: card.isFlipped ? "rotateY(180deg)" : "rotateY(0)",
+                "&:hover": {
+                  transform: card.isFlipped
+                    ? "rotateY(180deg)"
+                    : "rotateY(0) scale(1.05)",
                 },
               }}
             >
-              {card.isFlipped ? (card.isKangaroo ? '🦘' : '❌') : '?'}
+              {card.isFlipped ? (card.isKangaroo ? "🦘" : "❌") : "?"}
             </Paper>
           ))}
         </Box>
 
         {gameComplete && (
-          <Box sx={{ mt: 4, textAlign: 'center' }}>
+          <Box sx={{ mt: 4, textAlign: "center" }}>
             <button
               onClick={initializeGame}
               style={{
-                padding: '10px 20px',
-                fontSize: '1.1rem',
-                cursor: 'pointer',
-                backgroundColor: '#1976d2',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
+                padding: "10px 20px",
+                fontSize: "1.1rem",
+                cursor: "pointer",
+                backgroundColor: "#1976d2",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
               }}
             >
               Play Again
@@ -151,4 +162,4 @@ export default function Flip() {
       </Box>
     </Container>
   );
-} 
+}
