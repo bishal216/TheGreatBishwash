@@ -4,6 +4,7 @@ import React from "react";
 import CatchBishwash from "@/games/CatchBishwash";
 import FifteenPuzzle from "@/games/FifteenPuzzle";
 import FifteenPuzzleSlider from "@/games/FifteenPuzzleVariation";
+import RotatePuzzleGame from "@/games/FifteenPuzzleVariationB";
 export interface Game {
   id: string;
   title: string;
@@ -36,6 +37,14 @@ export const games: Game[] = [
     description: "A variation of the classic sliding puzzle game.",
     imageUrl: "/images/fifteen-puzzle-variation.png",
     component: FifteenPuzzleSlider,
+    category: "puzzle",
+  },
+  {
+    id: "fifteen-puzzle-variation-b",
+    title: "Rotate Puzzle",
+    description: "A unique puzzle game with rotating blocks.",
+    imageUrl: "/images/fifteen-puzzle-variation-b.png",
+    component: RotatePuzzleGame,
     category: "puzzle",
   },
 ];
