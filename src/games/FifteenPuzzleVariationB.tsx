@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
 
 import bgImage from "@/assets/bgBishwash2.jpg";
+
 const SIZE = 4; // 4x4 grid
 const TILE_SIZE = 80;
 
@@ -35,6 +36,7 @@ const shuffleTiles = (times = 100) => {
 
 export default function TileRotationGame() {
   const [tiles, setTiles] = useState<number[]>(() => shuffleTiles());
+  const [showNumbers, setShowNumbers] = useState(true);
 
   const rotate2x2 = (row: number, col: number) => {
     if (row >= SIZE - 1 || col >= SIZE - 1) return;
@@ -62,6 +64,13 @@ export default function TileRotationGame() {
       <Typography variant="h4" gutterBottom>
         2x2 Rotating Puzzle
       </Typography>
+      <Button
+        variant="outlined"
+        onClick={() => setShowNumbers((prev) => !prev)}
+        sx={{ mb: 2 }}
+      >
+        {showNumbers ? "Hide Numbers" : "Show Numbers"}
+      </Button>
 
       <Box
         sx={{
@@ -71,6 +80,7 @@ export default function TileRotationGame() {
           mx: "auto",
           border: "2px solid #333",
           padding: 2,
+          cursor: 'url("/rotateCursor.svg") 16 16, crosshair',
         }}
       >
         {tiles.map((tile, index) => {
@@ -100,13 +110,13 @@ export default function TileRotationGame() {
                 justifyContent: "center",
                 fontSize: 20,
                 fontWeight: "bold",
-                cursor: "grab",
+
                 userSelect: "none",
               }}
               onClick={() => rotate2x2(row, col)}
               transition={{ duration: 0.4 }}
             >
-              {tile}
+              {showNumbers ? tile : ""}
             </motion.div>
           );
         })}

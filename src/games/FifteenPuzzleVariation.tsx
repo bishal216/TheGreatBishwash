@@ -7,6 +7,7 @@ export default function FifteenPuzzleSlider() {
   const [tiles, setTiles] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
   const [won, setWon] = useState(false);
+  const [showNumbers, setShowNumbers] = useState(true);
 
   const generateTiles = (): number[] => {
     let tiles = Array.from({ length: 16 }, (_, i) => i + 1);
@@ -89,6 +90,13 @@ export default function FifteenPuzzleSlider() {
       <Typography variant="subtitle1" gutterBottom>
         Moves: {moves}
       </Typography>
+      <Button
+        variant="outlined"
+        onClick={() => setShowNumbers((prev) => !prev)}
+        sx={{ mb: 2 }}
+      >
+        {showNumbers ? "Hide Numbers" : "Show Numbers"}
+      </Button>
 
       <Box sx={{ position: "relative", textAlign: "center" }}>
         {/* Top Arrows */}
@@ -175,7 +183,7 @@ export default function FifteenPuzzleSlider() {
                     userSelect: "none",
                   }}
                 >
-                  {tile}
+                  {showNumbers ? tile : ""}
                 </motion.div>
               );
             })}

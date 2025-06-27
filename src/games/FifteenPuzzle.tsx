@@ -57,6 +57,7 @@ export default function FifteenPuzzle() {
   const [tiles, setTiles] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
   const [won, setWon] = useState(false);
+  const [showNumbers, setShowNumbers] = useState(true);
 
   useEffect(() => {
     resetGame();
@@ -116,7 +117,13 @@ export default function FifteenPuzzle() {
       <Typography variant="subtitle1" gutterBottom>
         Moves: {moves}
       </Typography>
-
+      <Button
+        variant="outlined"
+        onClick={() => setShowNumbers((prev) => !prev)}
+        sx={{ mb: 2 }}
+      >
+        {showNumbers ? "Hide Numbers" : "Show Numbers"}
+      </Button>
       <Grid
         container
         spacing={0}
@@ -156,7 +163,7 @@ export default function FifteenPuzzle() {
                 userSelect: "none",
               }}
             >
-              {tile !== 0 ? tile : ""}
+              {showNumbers && tile !== 0 ? tile : ""}
             </motion.div>
           </Grid>
         ))}
