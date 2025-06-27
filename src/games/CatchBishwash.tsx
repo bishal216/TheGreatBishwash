@@ -62,7 +62,7 @@ const CatchBishwash = () => {
       angle: Math.random() * 360,
     };
     setBishwashes((prev) => [...prev, newBishwash]);
-  }, [gameAreaRef.current?.offsetWidth]);
+  }, [gameArea.width, gameArea.height]);
 
   const catchBishwash = (id: number) => {
     setBishwashes((prev) => prev.filter((b) => b.id !== id));
@@ -104,7 +104,7 @@ const CatchBishwash = () => {
 
     const count = Math.min(
       Math.floor((score - appearAt) / addEvery) + 1,
-      messages.length
+      messages.length,
     );
 
     setOverlays(() => {

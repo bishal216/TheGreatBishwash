@@ -50,6 +50,7 @@
     "react-router-dom": "^7.6.0",
     "recharts": "^2.15.3",
     "tailwind-merge": "^3.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tinyqueue": "^3.0.0"
   }
 }

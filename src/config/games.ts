@@ -1,5 +1,8 @@
 import React from "react";
+
+// Game components
 import CatchBishwash from "@/games/CatchBishwash";
+import FifteenPuzzle from "@/games/FifteenPuzzle";
 export interface Game {
   id: string;
   title: string;
@@ -17,5 +20,13 @@ export const games: Game[] = [
     imageUrl: "/images/Bishwash_Head.png",
     component: CatchBishwash,
     category: "arcade",
+  },
+  {
+    id: "fifteen-puzzle",
+    title: "Fifteen Puzzle",
+    description: "A classic sliding puzzle game.",
+    imageUrl: "/images/fifteen-puzzle.png",
+    component: FifteenPuzzle,
+    category: "puzzle",
   },
 ];
