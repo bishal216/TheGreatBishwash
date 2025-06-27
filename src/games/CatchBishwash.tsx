@@ -81,7 +81,7 @@ const CatchBishwash = () => {
   useEffect(() => {
     if (!isPlaying) return;
 
-    const spawnInterval = setInterval(spawnBishwash, 1000);
+    const spawnInterval = setInterval(spawnBishwash, 500);
 
     return () => {
       clearInterval(spawnInterval);
@@ -104,7 +104,7 @@ const CatchBishwash = () => {
 
     const count = Math.min(
       Math.floor((score - appearAt) / addEvery) + 1,
-      messages.length,
+      messages.length
     );
 
     setOverlays(() => {
