@@ -9,8 +9,32 @@ const TILE_SIZE = 80;
 const getInitialTiles = () =>
   Array.from({ length: SIZE * SIZE }, (_, i) => i + 1);
 
+const shuffleTiles = (times = 100) => {
+  const shuffled = [...getInitialTiles()];
+
+  for (let i = 0; i < times; i++) {
+    const row = Math.floor(Math.random() * (SIZE - 1));
+    const col = Math.floor(Math.random() * (SIZE - 1));
+
+    const idx = (r: number, c: number) => r * SIZE + c;
+
+    const a = idx(row, col);
+    const b = idx(row, col + 1);
+    const c = idx(row + 1, col + 1);
+    const d = idx(row + 1, col);
+
+    const temp = shuffled[a];
+    shuffled[a] = shuffled[d];
+    shuffled[d] = shuffled[c];
+    shuffled[c] = shuffled[b];
+    shuffled[b] = temp;
+  }
+
+  return shuffled;
+};
+
 export default function TileRotationGame() {
-  const [tiles, setTiles] = useState<number[]>(getInitialTiles());
+  const [tiles, setTiles] = useState<number[]>(() => shuffleTiles());
 
   const rotate2x2 = (row: number, col: number) => {
     if (row >= SIZE - 1 || col >= SIZE - 1) return;
@@ -91,7 +115,7 @@ export default function TileRotationGame() {
       <Button
         variant="contained"
         sx={{ mt: 2 }}
-        onClick={() => setTiles(getInitialTiles())}
+        onClick={() => setTiles(shuffleTiles())}
       >
         Reset
       </Button>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
-
+import { motion } from "framer-motion";
 import puzzleImg from "@/assets/bgBishwash2.jpg";
 
 export default function FifteenPuzzleSlider() {
@@ -99,7 +99,7 @@ export default function FifteenPuzzleSlider() {
               key={`up-${col}`}
               size="small"
               onClick={() => rotate("col", col, "up")}
-              sx={{ fontSize: "1.5rem", mx: 0.5 }}
+              sx={{ fontSize: "1.5rem", mx: 0, width: 70, height: 70 }}
             >
               ↑
             </Button>
@@ -110,31 +110,52 @@ export default function FifteenPuzzleSlider() {
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+            mb: 2,
           }}
         >
-          {[0, 1, 2, 3].map((row) => (
-            <Box
-              key={row}
-              sx={{ display: "flex", alignItems: "center", mb: 0 }}
-            >
-              {/* Left Arrow */}
+          {/* Left Arrows */}
+          <Box sx={{ display: "flex", flexDirection: "column", mr: 1 }}>
+            {[0, 1, 2, 3].map((row) => (
               <Button
-                size="small"
                 variant="outlined"
-                sx={{ fontSize: "1.5rem", mr: 0.5 }}
+                key={`left-${row}`}
+                size="small"
                 onClick={() => rotate("row", row, "left")}
-                aria-label={`Rotate row ${row + 1} left`}
+                sx={{
+                  fontSize: "1.2rem",
+                  Width: 70,
+                  height: 70,
+                  p: 0,
+                }}
               >
                 ←
               </Button>
+            ))}
+          </Box>
 
-              {/* Row Tiles */}
-              {tiles.slice(row * 4, row * 4 + 4).map((tile, idx) => (
-                <Box
-                  key={idx}
-                  sx={{
+          {/* Puzzle Grid */}
+          <Box
+            sx={{
+              position: "relative",
+              width: 4 * 70,
+              height: 4 * 70,
+            }}
+          >
+            {tiles.map((tile, i) => {
+              const row = Math.floor(i / 4);
+              const col = i % 4;
+              return (
+                <motion.div
+                  key={tile}
+                  layout
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    position: "absolute",
+                    top: row * 70,
+                    left: col * 70,
                     width: 70,
                     height: 70,
                     backgroundImage: `url(${puzzleImg})`,
@@ -143,32 +164,42 @@ export default function FifteenPuzzleSlider() {
                       Math.floor((tile - 1) / 4) * 33.3333
                     }%`,
                     border: "1px solid #fff",
-                    boxShadow: 2,
-                    mx: 0,
+                    boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    color: "#fff",
                     fontWeight: "bold",
-                    color: "white",
                     fontSize: "1.2rem",
+                    borderRadius: 4,
                     userSelect: "none",
                   }}
-                  title={`Tile ${tile}`}
-                />
-              ))}
+                >
+                  {tile}
+                </motion.div>
+              );
+            })}
+          </Box>
 
-              {/* Right Arrow */}
+          {/* Right Arrows */}
+          <Box sx={{ display: "flex", flexDirection: "column", ml: 1 }}>
+            {[0, 1, 2, 3].map((row) => (
               <Button
-                size="small"
+                key={`right-${row}`}
                 variant="outlined"
-                sx={{ fontSize: "1.5rem", ml: 0.5 }}
+                size="small"
                 onClick={() => rotate("row", row, "right")}
-                aria-label={`Rotate row ${row + 1} right`}
+                sx={{
+                  fontSize: "1.2rem",
+                  minWidth: 70,
+                  height: 70,
+                  p: 0,
+                }}
               >
                 →
               </Button>
-            </Box>
-          ))}
+            ))}
+          </Box>
         </Box>
         {/* Bottom Arrows */}
         <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
@@ -176,7 +207,7 @@ export default function FifteenPuzzleSlider() {
             <Button
               key={`down-${col}`}
               variant="outlined"
-              sx={{ fontSize: "1.5rem", mx: 0.5 }}
+              sx={{ fontSize: "1.5rem", width: 70, height: 70, mx: 0 }}
               size="small"
               onClick={() => rotate("col", col, "down")}
               aria-label={`Rotate column ${col + 1} down`}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { motion } from "framer-motion";
 
 import puzzleImg from "@/assets/bgBishwash2.jpg";
 
@@ -124,42 +125,51 @@ export default function FifteenPuzzle() {
           maxWidth: 360,
           mx: "auto",
           mb: 3,
-          aspectRatio: "1 / 1", // makes the grid square
+          aspectRatio: "1 / 1",
         }}
       >
-        {tiles.map((tile, index) => (
-          <Grid size={3} key={index}>
-            <Box
-              onClick={() => handleTileClick(index)}
-              sx={{
+        {tiles.map((tile, i) => (
+          <Grid size={3} key={i}>
+            <motion.div
+              onClick={() => handleTileClick(i)}
+              whileTap={{ scale: tile !== 0 ? 0.95 : 1 }}
+              style={{
+                width: "100%",
                 aspectRatio: "1 / 1",
                 backgroundImage: tile === 0 ? "none" : `url(${puzzleImg})`,
-                backgroundSize: "400% 400%", // 4x4 grid
+                backgroundSize: "400% 400%",
                 backgroundPosition:
                   tile === 0
                     ? "none"
                     : `${((tile - 1) % 4) * 33.3333}% ${Math.floor((tile - 1) / 4) * 33.3333}%`,
                 border: tile === 0 ? "none" : "1px solid #fff",
-                borderRadius: 1,
-                boxShadow: tile === 0 ? "none" : 2,
+                borderRadius: 4,
+                boxShadow: tile === 0 ? "none" : "0 2px 4px rgba(0,0,0,0.3)",
                 cursor: tile === 0 ? "default" : "pointer",
-                "&:hover": {
-                  transform: tile !== 0 ? "scale(1.05)" : "none",
-                },
-                transition: "transform 0.15s ease-in-out",
                 backgroundColor: tile === 0 ? "#ddd" : "transparent",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                color: "#fff",
+                userSelect: "none",
               }}
-            />
+            >
+              {tile !== 0 ? tile : ""}
+            </motion.div>
           </Grid>
         ))}
       </Grid>
 
-      <Button variant="contained" onClick={handleAutoSolve} disabled>
-        Auto Solve
-      </Button>
-      <Button variant="contained" onClick={resetGame}>
-        Reset Game
-      </Button>
+      <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
+        <Button variant="contained" onClick={resetGame}>
+          Reset
+        </Button>
+        <Button variant="contained" onClick={handleAutoSolve} disabled>
+          Auto Solve
+        </Button>
+      </Box>
 
       {won && (
         <Typography variant="h6" sx={{ mt: 2, color: "green" }}>
